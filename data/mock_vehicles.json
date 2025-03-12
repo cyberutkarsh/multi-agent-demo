@@ -1,0 +1,113 @@
+[
+  {
+    "vehicle_id": "VEH-100",
+    "type": "truck",
+    "driver_name": "Driver 1",
+    "current_location": {
+      "latitude": 40.056216,
+      "longitude": -72.352694,
+      "address": "En route"
+    },
+    "status": "active",
+    "fuel_level": 84,
+    "maintenance": {
+      "last_service": "2025-01-05",
+      "next_service_due": "2025-03-08",
+      "issues": [
+        "Engine check light on",
+        "Brake pads worn"
+      ]
+    },
+    "capacity": {
+      "weight_kg": 1570,
+      "volume_m3": 18
+    }
+  },
+  {
+    "vehicle_id": "VEH-101",
+    "type": "van",
+    "driver_name": "Driver 2",
+    "current_location": {
+      "latitude": 41.794202,
+      "longitude": -72.92989,
+      "address": "En route"
+    },
+    "status": "maintenance",
+    "fuel_level": 32,
+    "maintenance": {
+      "last_service": "2025-02-18",
+      "next_service_due": "2025-03-01",
+      "issues": [
+        "Engine check light on",
+        "Brake pads worn"
+      ]
+    },
+    "capacity": {
+      "weight_kg": 1122,
+      "volume_m3": 10
+    }
+  },
+  {
+    "vehicle_id": "VEH-102",
+    "type": "delivery car",
+    "driver_name": "Driver 3",
+    "current_location": {
+      "latitude": 41.704321,
+      "longitude": -72.990251,
+      "address": "En route"
+    },
+    "status": "loading",
+    "fuel_level": 65,
+    "maintenance": {
+      "last_service": "2025-02-01",
+      "next_service_due": "2025-03-03",
+      "issues": []
+    },
+    "capacity": {
+      "weight_kg": 1135,
+      "volume_m3": 12
+    }
+  },
+  {
+    "vehicle_id": "VEH-103",
+    "type": "delivery car",
+    "driver_name": "Driver 4",
+    "current_location": {
+      "latitude": 41.219634,
+      "longitude": -72.677299,
+      "address": "En route"
+    },
+    "status": "maintenance",
+    "fuel_level": 46,
+    "maintenance": {
+      "last_service": "2024-12-12",
+      "next_service_due": "2025-04-05",
+      "issues": []
+    },
+    "capacity": {
+      "weight_kg": 914,
+      "volume_m3": 10
+    }
+  },
+  {
+    "vehicle_id": "VEH-104",
+    "type": "truck",
+    "driver_name": "Driver 5",
+    "current_location": {
+      "latitude": 41.15413,
+      "longitude": -72.716303,
+      "address": "En route"
+    },
+    "status": "loading",
+    "fuel_level": 21,
+    "maintenance": {
+      "last_service": "2025-01-28",
+      "next_service_due": "2025-05-26",
+      "issues": []
+    },
+    "capacity": {
+      "weight_kg": 539,
+      "volume_m3": 16
+    }
+  }
+]

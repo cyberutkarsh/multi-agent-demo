@@ -1,0 +1,142 @@
+{
+  "Springfield": {
+    "condition": "Cloudy",
+    "temperature_c": 27,
+    "wind_speed_kmh": 28,
+    "precipitation_mm": 0,
+    "forecast": [
+      {
+        "time": "20:16",
+        "condition": "Clear",
+        "temperature_c": 18
+      },
+      {
+        "time": "23:16",
+        "condition": "Foggy",
+        "temperature_c": 13
+      },
+      {
+        "time": "02:16",
+        "condition": "Cloudy",
+        "temperature_c": 26
+      },
+      {
+        "time": "05:16",
+        "condition": "Foggy",
+        "temperature_c": 20
+      }
+    ]
+  },
+  "Riverdale": {
+    "condition": "Stormy",
+    "temperature_c": 15,
+    "wind_speed_kmh": 24,
+    "precipitation_mm": 0,
+    "forecast": [
+      {
+        "time": "20:16",
+        "condition": "Foggy",
+        "temperature_c": 19
+      },
+      {
+        "time": "23:16",
+        "condition": "Cloudy",
+        "temperature_c": 33
+      },
+      {
+        "time": "02:16",
+        "condition": "Clear",
+        "temperature_c": 30
+      },
+      {
+        "time": "05:16",
+        "condition": "Clear",
+        "temperature_c": 15
+      }
+    ]
+  },
+  "Lakeside": {
+    "condition": "Sunny",
+    "temperature_c": 9,
+    "wind_speed_kmh": 6,
+    "precipitation_mm": 0,
+    "forecast": [
+      {
+        "time": "20:16",
+        "condition": "Cloudy",
+        "temperature_c": 29
+      },
+      {
+        "time": "23:16",
+        "condition": "Cloudy",
+        "temperature_c": 15
+      },
+      {
+        "time": "02:16",
+        "condition": "Sunny",
+        "temperature_c": 9
+      },
+      {
+        "time": "05:16",
+        "condition": "Clear",
+        "temperature_c": 29
+      }
+    ]
+  },
+  "Mountainview": {
+    "condition": "Sunny",
+    "temperature_c": 21,
+    "wind_speed_kmh": 26,
+    "precipitation_mm": 0,
+    "forecast": [
+      {
+        "time": "20:16",
+        "condition": "Stormy",
+        "temperature_c": 26
+      },
+      {
+        "time": "23:16",
+        "condition": "Foggy",
+        "temperature_c": 19
+      },
+      {
+        "time": "02:16",
+        "condition": "Sunny",
+        "temperature_c": 34
+      },
+      {
+        "time": "05:16",
+        "condition": "Partly Cloudy",
+        "temperature_c": 8
+      }
+    ]
+  },
+  "Oceanside": {
+    "condition": "Stormy",
+    "temperature_c": 15,
+    "wind_speed_kmh": 12,
+    "precipitation_mm": 0,
+    "forecast": [
+      {
+        "time": "20:16",
+        "condition": "Clear",
+        "temperature_c": 16
+      },
+      {
+        "time": "23:16",
+        "condition": "Foggy",
+        "temperature_c": 7
+      },
+      {
+        "time": "02:16",
+        "condition": "Sunny",
+        "temperature_c": 22
+      },
+      {
+        "time": "05:16",
+        "condition": "Sunny",
+        "temperature_c": 32
+      }
+    ]
+  }
+}

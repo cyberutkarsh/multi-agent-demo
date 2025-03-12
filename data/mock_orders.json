@@ -1,0 +1,152 @@
+[
+  {
+    "order_id": "ORD-1000",
+    "customer_name": "Customer 1",
+    "address": "456 Elm Ave, Riverdale, NY",
+    "delivery_window": {
+      "start": "20:16",
+      "end": "22:16"
+    },
+    "package_details": {
+      "weight_kg": 4.0,
+      "dimensions": "13x43x25 cm",
+      "fragile": false
+    },
+    "priority": "priority"
+  },
+  {
+    "order_id": "ORD-1001",
+    "customer_name": "Customer 2",
+    "address": "852 Spruce Blvd, Desertville, AZ",
+    "delivery_window": {
+      "start": "01:16",
+      "end": "03:16"
+    },
+    "package_details": {
+      "weight_kg": 12.5,
+      "dimensions": "49x41x12 cm",
+      "fragile": false
+    },
+    "priority": "priority"
+  },
+  {
+    "order_id": "ORD-1002",
+    "customer_name": "Customer 3",
+    "address": "987 Cedar Ct, Hillside, TX",
+    "delivery_window": {
+      "start": "02:16",
+      "end": "04:16"
+    },
+    "package_details": {
+      "weight_kg": 17.0,
+      "dimensions": "12x47x27 cm",
+      "fragile": true
+    },
+    "priority": "standard"
+  },
+  {
+    "order_id": "ORD-1003",
+    "customer_name": "Customer 4",
+    "address": "456 Elm Ave, Riverdale, NY",
+    "delivery_window": {
+      "start": "23:16",
+      "end": "01:16"
+    },
+    "package_details": {
+      "weight_kg": 19.7,
+      "dimensions": "17x32x11 cm",
+      "fragile": true
+    },
+    "priority": "express"
+  },
+  {
+    "order_id": "ORD-1004",
+    "customer_name": "Customer 5",
+    "address": "789 Oak Dr, Lakeside, CA",
+    "delivery_window": {
+      "start": "02:16",
+      "end": "04:16"
+    },
+    "package_details": {
+      "weight_kg": 5.2,
+      "dimensions": "42x24x30 cm",
+      "fragile": false
+    },
+    "priority": "standard"
+  },
+  {
+    "order_id": "ORD-1005",
+    "customer_name": "Customer 6",
+    "address": "789 Oak Dr, Lakeside, CA",
+    "delivery_window": {
+      "start": "23:16",
+      "end": "01:16"
+    },
+    "package_details": {
+      "weight_kg": 8.7,
+      "dimensions": "38x27x29 cm",
+      "fragile": false
+    },
+    "priority": "standard"
+  },
+  {
+    "order_id": "ORD-1006",
+    "customer_name": "Customer 7",
+    "address": "159 Cherry Ave, Plainsville, OH",
+    "delivery_window": {
+      "start": "00:16",
+      "end": "02:16"
+    },
+    "package_details": {
+      "weight_kg": 7.5,
+      "dimensions": "31x20x17 cm",
+      "fragile": false
+    },
+    "priority": "priority"
+  },
+  {
+    "order_id": "ORD-1007",
+    "customer_name": "Customer 8",
+    "address": "852 Spruce Blvd, Desertville, AZ",
+    "delivery_window": {
+      "start": "22:16",
+      "end": "00:16"
+    },
+    "package_details": {
+      "weight_kg": 1.8,
+      "dimensions": "34x12x15 cm",
+      "fragile": true
+    },
+    "priority": "express"
+  },
+  {
+    "order_id": "ORD-1008",
+    "customer_name": "Customer 9",
+    "address": "987 Cedar Ct, Hillside, TX",
+    "delivery_window": {
+      "start": "02:16",
+      "end": "04:16"
+    },
+    "package_details": {
+      "weight_kg": 4.6,
+      "dimensions": "39x19x25 cm",
+      "fragile": true
+    },
+    "priority": "express"
+  },
+  {
+    "order_id": "ORD-1009",
+    "customer_name": "Customer 10",
+    "address": "789 Oak Dr, Lakeside, CA",
+    "delivery_window": {
+      "start": "21:16",
+      "end": "23:16"
+    },
+    "package_details": {
+      "weight_kg": 10.6,
+      "dimensions": "22x24x13 cm",
+      "fragile": true
+    },
+    "priority": "standard"
+  }
+]

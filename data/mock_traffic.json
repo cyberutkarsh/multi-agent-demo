@@ -1,0 +1,32 @@
+{
+  "Main Highway": {
+    "congestion_level": 1,
+    "average_speed_kmh": 76,
+    "incidents": [],
+    "estimated_delay_minutes": 14
+  },
+  "Route 66": {
+    "congestion_level": 3,
+    "average_speed_kmh": 110,
+    "incidents": [],
+    "estimated_delay_minutes": 4
+  },
+  "Interstate 95": {
+    "congestion_level": 6,
+    "average_speed_kmh": 70,
+    "incidents": [],
+    "estimated_delay_minutes": 20
+  },
+  "Central Expressway": {
+    "congestion_level": 10,
+    "average_speed_kmh": 96,
+    "incidents": [],
+    "estimated_delay_minutes": 4
+  },
+  "Coastal Road": {
+    "congestion_level": 7,
+    "average_speed_kmh": 86,
+    "incidents": [],
+    "estimated_delay_minutes": 17
+  }
+}
