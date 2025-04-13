@@ -1,0 +1,105 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.spec
+.pytest_cache/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.project
+.pydevproject
+.settings/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Environment variables and secrets
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.pem
+*.key
+
+# Local workspace
+.workspace_id
+
+# Specific files to exclude
+q2_deal_prioritization_ui.py
+q2_deal_prioritization.py
+
+# Databricks folder - only keep the README file
+databricks/*
+!databricks/DATABRICKS_AGENT_README.md
+databricks/**/*
+!databricks/DATABRICKS_AGENT_README.md
+
+# Specific __pycache__ directories
+agents/__pycache__/
+components/__pycache__/
+utils/__pycache__/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+*.tmp
+*.temp
+
+# Data files
+data/
+*.csv
+*.json
+*.xml
+*.yaml
+*.yml
+!requirements.txt 

@@ -9,10 +9,11 @@ A comprehensive multi-agent system for supply chain management, powered by Anthr
 4. [Usage](#usage)
 5. [API Documentation](#api-documentation)
 6. [Architecture](#architecture)
-7. [Multi-turn Conversations](#multi-turn-conversations)
-8. [Response Format](#response-format)
-9. [Error Handling](#error-handling)
-10. [Development](#development)
+7. [Q2 Deal Prioritization System](#q2-deal-prioritization-system)
+8. [Multi-turn Conversations](#multi-turn-conversations)
+9. [Response Format](#response-format)
+10. [Error Handling](#error-handling)
+11. [Development](#development)
 
 ## Overview
 
@@ -23,6 +24,7 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 - Specialized agents with different capabilities
 - Multi-turn conversation support
 - Visual tracking of agent processing
+- Q2 Deal Prioritization workflow (new!)
 
 ## Features
 
@@ -32,6 +34,7 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 - **Notification System**: Send alerts and updates to relevant stakeholders
 - **Role-Based Interface**: Different views for logistics coordinators, drivers, and administrators
 - **API Integration**: Connect with external orchestrator agents and systems
+- **Q2 Deal Prioritization**: Multi-agent workflow for scoring sales opportunities (new!)
 
 ## Installation
 
@@ -43,7 +46,7 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 
 2. Install dependencies:
    ```bash
-   pip install streamlit anthropic langgraph matplotlib networkx fastapi uvicorn pydantic
+   pip install -r requirements.txt
    ```
 
 3. Set your Anthropic API key:
@@ -53,7 +56,26 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 
 ## Usage
 
-### Streamlit Web Interface
+### Integrated Application
+
+1. Run the integrated application (combines both Supply Chain System and Q2 Deal Prioritization):
+   ```bash
+   streamlit run integrated_app.py
+   ```
+
+2. Open your browser to [http://localhost:8501](http://localhost:8501)
+
+3. Use the tabs at the top to switch between the Supply Chain System and Q2 Deal Prioritization dashboard
+
+4. For the Supply Chain System:
+   - Select your role (Logistics Coordinator, Driver, or Administrator)
+   - Start interacting with the agents through the chat interface
+
+5. For Q2 Deal Prioritization:
+   - Click "Run Q2 Deal Prioritization with Llama 4" to start the workflow
+   - View the real-time status updates and final results
+
+### Streamlit Web Interface (Supply Chain Only)
 
 1. Run the Streamlit app:
    ```bash
@@ -71,6 +93,17 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 1. Run the API server:
    ```bash
    python api.py
+   ```
+
+2. The API will be available at [http://localhost:8000](http://localhost:8000)
+
+3. Access the interactive API documentation at [http://localhost:8000/docs](http://localhost:8000/docs)
+
+### Q2 Deal Prioritization System
+
+1. Run the Q2 Deal Prioritization API:
+   ```bash
+   python q2_deal_prioritization.py
    ```
 
 2. The API will be available at [http://localhost:8000](http://localhost:8000)
@@ -118,6 +151,12 @@ This Supply Chain Multi-Agent System demonstrates the power of specialized AI ag
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/query` | POST   | Process a query through the supply chain multi-agent system |
+| `/run-workflow` | POST | Run the Q2 deal prioritization workflow |
+| `/snowflake/query` | POST | Query data from Snowflake |
+| `/snowflake/insert` | POST | Insert data into Snowflake |
+| `/databricks/score` | POST | Score opportunities using Databricks |
+| `/salesforce/opportunity/{id}` | PATCH | Update an opportunity in Salesforce |
+| `/salesforce/task` | POST | Create a task in Salesforce |
 
 ### Integration Guide for Orchestrator Agents
 
@@ -184,6 +223,72 @@ The system consists of several components:
 5. **Notification Agent**: Sends alerts and notifications to relevant parties
 6. **Web Interface**: Streamlit app providing chat interface with agent processing visualization
 7. **API Server**: FastAPI service allowing external systems to use the agent capabilities
+
+## Q2 Deal Prioritization System
+
+The Q2 Deal Prioritization system is a Multi-Agent workflow that:
+
+1. Pulls raw opportunity data from Snowflake
+2. Scores each deal in Databricks
+3. Writes scores and follow-up tasks back into Salesforce
+4. Inserts a summary row back into Snowflake for dashboards
+
+### Components
+
+1. **OrchestratorAgent**: Central coordinator that drives the entire flow by calling each service in sequence
+2. **SnowflakeAgent**: Handles data queries and inserts for Snowflake
+3. **DatabricksAgent**: Scores opportunities based on defined criteria
+4. **SalesforceAgent**: Updates opportunities and creates follow-up tasks
+
+### Data Models
+
+- **Opportunity**: Basic sales opportunity data with amount, industry, etc.
+- **ScoredOpportunity**: Opportunity with win probability and next best product
+- **SummaryRow**: Aggregated data about high-priority deals for dashboards
+
+### Workflow Sequence
+
+1. Trigger the system with a "run Q2 prioritization" command
+2. Fetch raw opportunity data from Snowflake
+3. Score deals using the Databricks model
+4. Update Salesforce with scores and create follow-up tasks
+5. Write summary data back to Snowflake
+6. Return a comprehensive results report
+
+### Using the Q2 Deal Prioritization API
+
+```bash
+# Run the Q2 Deal Prioritization workflow
+curl --location 'http://localhost:8000/run-workflow' \
+--header 'Content-Type: application/json' \
+--data '{
+    "command": "run Q2 prioritization"
+}'
+
+# Query opportunities from Snowflake
+curl --location 'http://localhost:8000/snowflake/query' \
+--header 'Content-Type: application/json' \
+--data '{
+    "sql": "SELECT * FROM sales.opportunities"
+}'
+
+# Score opportunities with Databricks
+curl --location 'http://localhost:8000/databricks/score' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "prod_fin_sales_v2",
+    "data": [
+        {"id":"opp_001","amount":250000,"accountId":"acct_A","stage":"Proposal","industry":"Finance","monthlyVolume":120000,"marketTrendScore":0.8}
+    ]
+}'
+```
+
+### Error Handling
+
+The system implements the following error handling strategies:
+- **5xx responses** from any agent: retry up to 2× with exponential backoff
+- **DatabricksAgent failure**: abort the entire flow and report an error
+- **SalesforceAgent 4xx** on a particular record: log that record's ID and continue with the rest
 
 ## Multi-turn Conversations
 
@@ -378,13 +483,17 @@ supply_chain_agents/
 ├── main.py                # CLI interface (alternative to web UI)
 ├── app.py                 # Streamlit web interface
 ├── api.py                 # FastAPI REST API
+├── integrated_app.py      # Combined app with Supply Chain & Q2 Deal Prioritization
 ├── agents/
 │   ├── __init__.py
 │   ├── coordinator.py     # Central agent for routing requests
 │   ├── route_optimizer.py # Route optimization specialist
 │   ├── fleet_monitor.py   # Vehicle tracking and maintenance
 │   ├── data_retriever.py  # Weather and traffic data fetching
-│   └── notification.py    # Communication with drivers/admins
+│   ├── notification.py    # Communication with drivers/admins
+│   ├── databricks_agent.py # Deal scoring with Llama 4
+│   ├── salesforce_agent.py # CRM updates and task creation
+│   └── snowflake_agent.py  # Data warehouse interaction
 ├── components/
 │   └── agent_visualizer.py # Visualization of agent workflow
 ├── models/
@@ -392,6 +501,8 @@ supply_chain_agents/
 │   ├── vehicle.py         # Vehicle data models
 │   ├── order.py           # Order and delivery models
 │   └── user.py            # User profiles (driver, admin)
+├── databricks/
+│   └── DATABRICKS_AGENT_README.md # Documentation for Databricks integration
 ├── data/
 │   ├── mock_orders.json   # Sample order data
 │   ├── mock_vehicles.json # Sample vehicle data
